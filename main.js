@@ -18,7 +18,7 @@ const books = [
             age: 20
         },
         available: true,
-        price: '25€',
+        price: "25 ",
         tags: ['advanced', 'js', 'mid-senior']
     },
     {
@@ -46,8 +46,26 @@ const books = [
 ];
 
 // SNACK 1
-const longBooks = books.filter((book) => book.pages > 300)
-console.log(longBooks);
-const longBooksTitles = longBooks.map((book) => book.title);
-longBooksTitles.forEach((title) => console.log(title));
+// const longBooks = books.filter((book) => book.pages > 300)
+// console.log(longBooks);
+// const longBooksTitles = longBooks.map((book) => book.title);
+// longBooksTitles.forEach((title) => console.log(title));
 // SNACK 2
+const availableBooks = books.filter((book) => book.available = true);
+console.log(availableBooks);
+const discountedBooks = availableBooks.map((book) => {
+    const price = book.price.replace('€', '');
+    const discountedPrice = (parseFloat(price) * 0.8).toFixed(2)
+    return {
+        ...book,
+        price: `${discountedPrice} €`
+    }
+})
+console.log(discountedBooks);
+
+const fullPricedBook = discountedBooks.find((book) => {
+    const price = book.price.replace('€', '');
+    const numPrice = parseFloat(price);
+    return numPrice % 1 === 0
+})
+console.log(fullPricedBook);
