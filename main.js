@@ -50,22 +50,37 @@ const books = [
 // console.log(longBooks);
 // const longBooksTitles = longBooks.map((book) => book.title);
 // longBooksTitles.forEach((title) => console.log(title));
+
 // SNACK 2
-const availableBooks = books.filter((book) => book.available = true);
-console.log(availableBooks);
-const discountedBooks = availableBooks.map((book) => {
-    const price = book.price.replace('€', '');
-    const discountedPrice = (parseFloat(price) * 0.8).toFixed(2)
-    return {
-        ...book,
-        price: `${discountedPrice} €`
+// const availableBooks = books.filter((book) => book.available = true);
+// console.log(availableBooks);
+// const discountedBooks = availableBooks.map((book) => {
+//     const price = book.price.replace('€', '');
+//     const discountedPrice = (parseFloat(price) * 0.8).toFixed(2)
+//     return {
+//         ...book,
+//         price: `${discountedPrice} €`
+//     }
+// })
+// console.log(discountedBooks);
+
+// const fullPricedBook = discountedBooks.find((book) => {
+//     const price = book.price.replace('€', '');
+//     const numPrice = parseFloat(price);
+//     return numPrice % 1 === 0
+// })
+// console.log(fullPricedBook);
+
+// SNACK 3
+const authors = books.map(b => b.author)
+console.log(authors);
+
+const areAuthorsAdult = books.every(b => b.author.age >= 18);
+
+authors.sort((a, b) => {
+    if (areAuthorsAdult) {
+        return (a.age - b.age);
+    } else {
+        return (b.age - a.age);
     }
 })
-console.log(discountedBooks);
-
-const fullPricedBook = discountedBooks.find((book) => {
-    const price = book.price.replace('€', '');
-    const numPrice = parseFloat(price);
-    return numPrice % 1 === 0
-})
-console.log(fullPricedBook);
