@@ -72,15 +72,26 @@ const books = [
 // console.log(fullPricedBook);
 
 // SNACK 3
-const authors = books.map(b => b.author)
-console.log(authors);
+// const authors = books.map(b => b.author)
+// console.log(authors);
 
-const areAuthorsAdult = books.every(b => b.author.age >= 18);
+// const areAuthorsAdult = books.every(b => b.author.age >= 18);
 
-authors.sort((a, b) => {
-    if (areAuthorsAdult) {
-        return (a.age - b.age);
-    } else {
-        return (b.age - a.age);
-    }
-})
+// authors.sort((a, b) => {
+//     if (areAuthorsAdult) {
+//         return (a.age - b.age);
+//     } else {
+//         return (b.age - a.age);
+//     }
+// })
+
+// SNACK 4
+const ages = books.map(b => b.author.age);
+console.log(ages);
+const agesSum = ages.reduce((acc, age) => {
+    return acc + age
+}, 0);
+console.log(agesSum);
+
+const aveAges = agesSum / ages.length;
+console.log(aveAges);
